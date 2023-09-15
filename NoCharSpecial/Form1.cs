@@ -17,11 +17,12 @@ namespace NoCharSpecial
 {
     public partial class Form1 : Form
     {
+        UpdateManager manager;
         public Form1()
         {
             InitializeComponent();
 
-            CheckUpdates();
+            Load += Form1_LoadAsync;
         }
 
         private void ContentBox_TextChanged(object sender, EventArgs e)
@@ -49,6 +50,28 @@ namespace NoCharSpecial
 
                 MessageBox.Show("Updated succesfuly!");
             }
+        }
+
+        private async void Form1_LoadAsync(object sender, EventArgs e)
+        {
+            manager = await UpdateManager
+                .GitHubUpdateManager(@"https://github.com/GabrielMarussi/NoSpecialChar");
+            var updateInfo = await manager.CheckForUpdate();
+
+            DialogResult result = MessageBox.Show(
+                "Esse programa possui " + updateInfo.ReleasesToApply.Count.ToString() + " atualizações para serem feitas. Deseja fazer agora?", 
+                "Atualizações para serem feitas"
+                ,MessageBoxButtons.YesNo
+            );
+
+            if(result == DialogResult.Yes)
+            {
+                await manager.UpdateApp();
+            }
+            else{
+                return;
+            }
+            
         }
     }
 }
