@@ -39,7 +39,7 @@ namespace NoCharSpecial
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label1.ForeColor = System.Drawing.SystemColors.Info;
             this.label1.Location = new System.Drawing.Point(9, 52);
             this.label1.Name = "label1";
@@ -50,7 +50,7 @@ namespace NoCharSpecial
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label2.ForeColor = System.Drawing.SystemColors.Info;
             this.label2.Location = new System.Drawing.Point(9, 9);
             this.label2.Name = "label2";
@@ -81,7 +81,7 @@ namespace NoCharSpecial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(388, 105);
             this.Controls.Add(this.ResultBox);
             this.Controls.Add(this.ContentBox);
