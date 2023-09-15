@@ -59,13 +59,13 @@ namespace NoCharSpecial
 
             var updateInfo = await manager.CheckForUpdate();
 
-            DialogResult result = MessageBox.Show(
-                    "Temos " + updateInfo.ReleasesToApply.Count.ToString() + " atualizações para serem feitas. Deseja fazer agora?",
-                    "Atualizações para serem feitas"
-                    , MessageBoxButtons.YesNo
-                );
             if (updateInfo.ReleasesToApply.Count > 0)
             {
+                DialogResult result = MessageBox.Show(
+                        "Temos " + updateInfo.ReleasesToApply.Count.ToString() + " atualizações para serem feitas. Deseja fazer agora?",
+                        "Atualizações para serem feitas"
+                        , MessageBoxButtons.YesNo
+                    );
                 if (result == DialogResult.Yes) await manager.UpdateApp();
                 else return;
             };
