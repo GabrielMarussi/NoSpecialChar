@@ -56,22 +56,26 @@ namespace NoCharSpecial
         {
             manager = await UpdateManager
                 .GitHubUpdateManager(@"https://github.com/GabrielMarussi/NoSpecialChar");
+
             var updateInfo = await manager.CheckForUpdate();
 
             DialogResult result = MessageBox.Show(
-                "Esse programa possui " + updateInfo.ReleasesToApply.Count.ToString() + " atualizações para serem feitas. Deseja fazer agora?", 
-                "Atualizações para serem feitas"
-                ,MessageBoxButtons.YesNo
-            );
-
-            if(result == DialogResult.Yes)
+                    "Temos " + updateInfo.ReleasesToApply.Count.ToString() + " atualizações para serem feitas. Deseja fazer agora?",
+                    "Atualizações para serem feitas"
+                    , MessageBoxButtons.YesNo
+                );
+            if (updateInfo.ReleasesToApply.Count > 0)
             {
-                await manager.UpdateApp();
-            }
-            else{
-                return;
-            }
-            
+                if (result == DialogResult.Yes) await manager.UpdateApp();
+                else return;
+            };
+
+            return;
+        }
+
+        private void ButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
